@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'core/styles.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Casualty Records</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Casualty Records</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Report</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for casualty in casualties %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ casualty.report }}</td>
+                    <td>{{ casualty.report_date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'register_casualty' %}" class="btn btn-primary">Register New Casualty Report</a>
+    </div>
+</body>
+</html>

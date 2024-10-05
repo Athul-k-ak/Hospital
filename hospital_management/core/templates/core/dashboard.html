@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'core/styles.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Dashboard</h1>
+        <div class="row mt-4">
+            <!-- Registration Buttons Column -->
+            <div class="col-md-6">
+                <h3>Registration</h3>
+                <div class="mb-3">
+                    <a href="{% url 'register_patient' %}" class="btn btn-primary btn-block">Register Patient</a>
+                    <a href="{% url 'consult_patient' %}" class="btn btn-dark btn-block">Consult Patient</a>
+                    <a href="{% url 'register_staff' %}" class="btn btn-warning btn-block">Register Staff</a>
+                    <a href="{% url 'register_casualty' %}" class="btn btn-danger btn-block">Register Casualty Report</a>
+                </div>
+            </div>
+
+            <!-- Records Column -->
+            <div class="col-md-6">
+                <h3>Records</h3>
+                <div class="mb-3">
+                    <a href="{% url 'patient_records' %}" class="btn btn-secondary btn-block">View Patient Records</a>
+                    <a href="{% url 'consultation_records' %}" class="btn btn-success btn-block">View Consultation Records</a>
+                    <a href="{% url 'staff_records' %}" class="btn btn-info btn-block">View Staff Records</a>
+                    <a href="{% url 'casualty_records' %}" class="btn btn-dark btn-block">View Casualty Reports</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Patient Consultation Section -->
+       
+    </div>
+</body>
+</html>

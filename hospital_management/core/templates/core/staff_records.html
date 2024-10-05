@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'core/styles.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Staff Records</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Staff Records</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for staff_member in staff %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ staff_member.name }}</td>
+                    <td>{{ staff_member.role }}</td>
+                    <td>{{ staff_member.phone }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'register_staff' %}" class="btn btn-primary">Register New Staff</a>
+    </div>
+</body>
+</html>

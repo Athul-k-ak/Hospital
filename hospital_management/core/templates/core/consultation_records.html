@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'core/styles.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Consultation Records</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Consultation Records</h1>
+
+        <form method="get" class="mb-3">
+            <label for="filter_date">Filter by Date:</label>
+            <input type="date" name="filter_date" value="{{ filter_date }}">
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
+
+        <h3>Patients Paid ₹300</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Patient Name</th>
+                    <th>Registration ID</th>
+                    <th>Phone</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Paid Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for consultation in paid_300_consultations %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ consultation.patient.name }}</td>
+                    <td>{{ consultation.patient.reg_id }}</td>
+                    <td>{{ consultation.patient.phone }}</td>
+                    <td>{{ consultation.date }}</td>
+                    <td>{{ consultation.time }}</td>
+                    <td>{{ consultation.paid_amount }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h3>Patients Paid ₹270</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Patient Name</th>
+                    <th>Registration ID</th>
+                    <th>Phone</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Paid Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for consultation in paid_270_consultations %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ consultation.patient.name }}</td>
+                    <td>{{ consultation.patient.reg_id }}</td>
+                    <td>{{ consultation.patient.phone }}</td>
+                    <td>{{ consultation.date }}</td>
+                    <td>{{ consultation.time }}</td>
+                    <td>{{ consultation.paid_amount }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h3>Visited Within 6 Days</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Patient Name</th>
+                    <th>Registration ID</th>
+                    <th>Phone</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Paid Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for consultation in visited_within_6_days_consultations %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ consultation.patient.name }}</td>
+                    <td>{{ consultation.patient.reg_id }}</td>
+                    <td>{{ consultation.patient.phone }}</td>
+                    <td>{{ consultation.date }}</td>
+                    <td>{{ consultation.time }}</td>
+                    <td>{{ consultation.paid_amount }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h3>Total Cash Received: ₹{{ total_cash_received }}</h3>
+        <a href="{% url 'dashboard' %}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+    </div>
+</body>
+</html>
