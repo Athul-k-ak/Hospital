@@ -10,11 +10,11 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="text-center">Dashboard</h1>
+        <h1 class="text-center">Welcome To Hospital Dashboard</h1>
         <div class="row mt-4">
             <!-- Registration Buttons Column -->
             <div class="col-md-6">
-                <h3>Registration</h3>
+                <center><h3>Registration</h3></center>
                 <div class="mb-3">
                     <a href="{% url 'register_patient' %}" class="btn btn-primary btn-block">Register Patient</a>
                     <a href="{% url 'consult_patient' %}" class="btn btn-dark btn-block">Consult Patient</a>
@@ -25,7 +25,7 @@
 
             <!-- Records Column -->
             <div class="col-md-6">
-                <h3>Records</h3>
+                <center><h3>Records</h3></center>
                 <div class="mb-3">
                     <a href="{% url 'patient_records' %}" class="btn btn-secondary btn-block">View Patient Records</a>
                     <a href="{% url 'consultation_records' %}" class="btn btn-success btn-block">View Consultation Records</a>

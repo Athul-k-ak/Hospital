@@ -4,22 +4,45 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'core/styles.css' %}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Patient Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'core/styles.css' %}">
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="text-center">Patient Details</h1>
-        <h3>Name: {{ patient.name }}</h3>
-        <p>Registration ID: {{ patient.reg_id }}</p>
-        <p>Place: {{ patient.place }}</p>
-        <p>Age: {{ patient.age }}</p>
-        <p>Phone: {{ patient.phone }}</p>
-        <p>Gender: {{ patient.gender }}</p>
-        <p>Registered At: {{ patient.registered_at }}</p>
-        <a href="{% url 'dashboard' %}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+        <div class="patient-card">
+            <div class="card-header">
+                <center><h2 class="card-title">Patient Details</h2></center>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <!-- Column for Labels -->
+                    <div class="col-md-6">
+                        <p><strong>Name:</strong></p>
+                        <p><strong>Place:</strong></p>
+                        <p><strong>Age:</strong></p>
+                        <p><strong>Phone:</strong></p>
+                        <p><strong>Gender:</strong></p>
+                        <p><strong>Registration Date:</strong></p>
+                        <p><strong>Last Visit:</strong></p>
+                    </div>
 
+                    <!-- Column for Values -->
+                    <div class="col-md-6">
+                        <p>{{ patient.name }}</p>
+                        <p>{{ patient.place }}</p>
+                        <p>{{ patient.age }}</p>
+                        <p>{{ patient.phone }}</p>
+                        <p>{{ patient.gender }}</p>
+                        <p>{{ patient.registered_at }}</p>
+                        <p>{{ patient.last_visit }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'dashboard' %}" class="btn btn-secondary">Back to Dashboard</a>
+            </div>
+        </div>
     </div>
 </body>
 </html>

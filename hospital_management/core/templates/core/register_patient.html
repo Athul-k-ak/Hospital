@@ -11,12 +11,82 @@
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Register Patient</h1>
+        
         <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
+
+            <!-- Name Field -->
+            <div class="form-group">
+                <label for="name">Name</label>
+                {{ form.name }}
+                {% if form.name.errors %}
+                    <div class="alert alert-danger">
+                        {{ form.name.errors }}
+                    </div>
+                {% endif %}
+            </div>
+            
+            <!-- Place Field -->
+            <div class="form-group">
+                <label for="place">Place</label>
+                {{ form.place }}
+                {% if form.place.errors %}
+                    <div class="alert alert-danger">
+                        {{ form.place.errors }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Age Field -->
+            <div class="form-group">
+                <label for="age">Age</label>
+                {{ form.age }}
+                {% if form.age.errors %}
+                    <div class="alert alert-danger">
+                        {{ form.age.errors }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Phone Field -->
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                {{ form.phone }}
+                {% if form.phone.errors %}
+                    <div class="alert alert-danger">
+                        {{ form.phone.errors }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Gender Field -->
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                {{ form.gender }}
+                {% if form.gender.errors %}
+                    <div class="alert alert-danger">
+                        {{ form.gender.errors }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Registered At Field -->
+            <div class="form-group">
+                <label for="registered_at">Registered At</label>
+                {{ form.registered_at }}
+                {% if form.registered_at.errors %}
+                    <div class="alert alert-danger">
+                        {{ form.registered_at.errors }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Submit Button -->
             <button type="submit" class="btn btn-primary">Register</button>
+            <a href="{% url 'dashboard' %}" class="btn btn-secondary ">Back to Dashboard</a>
+
         </form>
-        <a href="{% url 'dashboard' %}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+
     </div>
 </body>
 </html>

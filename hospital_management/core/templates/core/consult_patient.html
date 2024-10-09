@@ -19,10 +19,13 @@
                 <input type="text" name="reg_id" class="form-control" id="reg_id" placeholder="Registration ID" required>
             </div>
             <button type="submit" class="btn btn-primary">Consult Patient</button>
+            <a href="{% url 'dashboard' %}" class="btn btn-secondary">Back to Dashboard</a>
+
         </form>
 
         {% if error %}
             <div class="alert alert-danger mt-3">{{ error }}</div>
+
         {% endif %}
     </div>
 </body>

@@ -1,3 +1,4 @@
+/* General styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #f8f9fa;
@@ -8,10 +9,76 @@ body {
     margin: 0 auto;
 }
 
-h1 {
+h1, h2 {
     color: #343a40;
 }
 
+h2 {
+    font-size: 1.5rem;
+}
+
+/* Card Styling for Forms */
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 30px;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Styling */
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #495057;
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    margin:10px;
+    padding: 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .card {
+        padding: 20px;
+    }
+
+    .btn-block {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+/* Table styles */
 .table {
     background-color: white;
 }
@@ -21,6 +88,7 @@ h1 {
     vertical-align: middle;
 }
 
+/* Large Button Styles */
 .btn-lg {
     margin-bottom: 10px;
 }
@@ -33,4 +101,84 @@ h1 {
 .btn-info:hover {
     background-color: #138496;
     border-color: #117a8b;
+}
+
+/* Patient Details Card Styles */
+.patient-card {
+    max-width: 600px;
+    margin: 20px auto;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+.card-header {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-bottom: 1px solid #007bff;
+    border-radius: 8px 8px 0 0;
+}
+
+.card-title {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-body p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.card-body p strong {
+    font-weight: 600;
+}
+
+.card-footer {
+    background-color: #f1f1f1;
+    padding: 10px 20px;
+    border-top: 1px solid #e0e0e0;
+    border-radius: 0 0 8px 8px;
+}
+
+/* Form-specific styling */
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group.col-md-6 {
+    flex: 1;
+    padding-right: 10px;
+}
+
+.form-group.col-md-6:last-child {
+    padding-right: 0;
+}
+
+/* Input for Date */
+input[type="date"] {
+    padding: 8px;
+    font-size: 16px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    background-color: #ffffff;
+    box-shadow: none;
+}
+
+
+.alert-danger {
+    margin-top: 5px;
+    font-size: 0.9rem;
+    color: #dc3545;
 }

@@ -6,19 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'core/styles.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>Consultation Records</title>
 </head>
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Consultation Records</h1>
 
+        <!-- Date Filter Form -->
         <form method="get" class="mb-3">
             <label for="filter_date">Filter by Date:</label>
-            <input type="date" name="filter_date" value="{{ filter_date }}">
+            <input type="date" name="filter_date" value="{{ filter_date|date:'Y-m-d' }}" required>
             <button type="submit" class="btn btn-primary">Filter</button>
         </form>
 
-        <h3>Patients Paid ₹300</h3>
+        <!-- Section for Patients Paid ₹300 (New Patients) -->
+        <h5>Patients Paid ₹300 (New Patients)</h5>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -41,12 +44,19 @@
                     <td>{{ consultation.date }}</td>
                     <td>{{ consultation.time }}</td>
                     <td>{{ consultation.paid_amount }}</td>
+                    <td>
+                        <!-- Delete Icon -->
+                        <a href="{% url 'delete_consultation' consultation.pk %}" class="btn btn-danger btn-sm" title="Delete">
+                            <i class="fas fa-trash"></i> <!-- Trash Icon -->
+                        </a>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
 
-        <h3>Patients Paid ₹270</h3>
+        <!-- Section for Patients Paid ₹270 (Returning Patients) -->
+        <h5>Patients Paid ₹270 (Returning Patients)</h5>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -57,6 +67,7 @@
                     <th>Date</th>
                     <th>Time</th>
                     <th>Paid Amount</th>
+                    <th>Last Visit</th> <!-- New Last Visit Column -->
                 </tr>
             </thead>
             <tbody>
@@ -69,12 +80,20 @@
                     <td>{{ consultation.date }}</td>
                     <td>{{ consultation.time }}</td>
                     <td>{{ consultation.paid_amount }}</td>
+                    <td>{{ consultation.patient.last_visit }}</td> <!-- Display Last Visit -->
+                    <td>
+                        <!-- Delete Icon -->
+                        <a href="{% url 'delete_consultation' consultation.pk %}" class="btn btn-danger btn-sm" title="Delete">
+                            <i class="fas fa-trash"></i> <!-- Trash Icon -->
+                        </a>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
 
-        <h3>Visited Within 6 Days</h3>
+        <!-- Section for Patients Visited Within 6 Days (Free Consultation) -->
+        <h5>Visited Within 6 Days (Free Consultation)</h5>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -85,6 +104,7 @@
                     <th>Date</th>
                     <th>Time</th>
                     <th>Paid Amount</th>
+                    <th>Last Visit</th> <!-- New Last Visit Column -->
                 </tr>
             </thead>
             <tbody>
@@ -97,12 +117,22 @@
                     <td>{{ consultation.date }}</td>
                     <td>{{ consultation.time }}</td>
                     <td>{{ consultation.paid_amount }}</td>
+                    <td>{{ consultation.patient.last_visit }}</td> <!-- Display Last Visit -->
+                    <td>
+                        <!-- Delete Icon -->
+                        <a href="{% url 'delete_consultation' consultation.pk %}" class="btn btn-danger btn-sm" title="Delete">
+                            <i class="fas fa-trash"></i> <!-- Trash Icon -->
+                        </a>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
 
-        <h3>Total Cash Received: ₹{{ total_cash_received }}</h3>
+        <!-- Total Cash Received -->
+        <h4>Total Cash Received: ₹{{ total_cash_received }}</h4>
+
+        <!-- Back to Dashboard Button -->
         <a href="{% url 'dashboard' %}" class="btn btn-secondary mt-3">Back to Dashboard</a>
     </div>
 </body>

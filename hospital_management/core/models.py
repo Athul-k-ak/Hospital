@@ -15,19 +15,19 @@ class Patient(models.Model):
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES, default='Male')
     reg_id = models.CharField(max_length=10, unique=True)
     paid_amount = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
-    registered_at = models.DateTimeField(auto_now_add=True)
-
+    registered_at = models.DateField()  # Changed to store the entered date
+    last_visit = models.DateField(null=True, blank=True) 
     def __str__(self):
         return self.name
 
 class Consultation(models.Model):
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
-    date = models.DateField()  # Remove auto_now_add=True
-    time = models.TimeField()  # Remove auto_now_add=True
     paid_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    date = models.DateField()  # Storing consultation date
+    time = models.TimeField(auto_now_add=True)  # Automatically capture the time
 
     def __str__(self):
-        return f"Consultation for {self.patient.name}"
+        return f"{self.patient.name} - {self.date}"
 
 
 class Staff(models.Model):
@@ -36,5 +36,10 @@ class Staff(models.Model):
     phone = models.CharField(max_length=15)
 
 class CasualtyReport(models.Model):
-    report = models.TextField()
-    report_date = models.DateTimeField(default=timezone.now)
+    name = models.CharField(max_length=100, default='Unknown')   # Name of the casualty
+    report = models.TextField()  # Casualty report
+    amount = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)  # Amount field
+    report_date = models.DateField(default=timezone.now)  # Date field (date only, no time)
+
+    def __str__(self):
+        return f"{self.name} - {self.report_date}"

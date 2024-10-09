@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     {% load static %}
+    {% load custom_filters %}
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -13,11 +15,21 @@
         <form method="post">
             {% csrf_token %}
             <div class="form-group">
-                {{ form.as_p }}
+                <label for="name">Name</label>
+                {{ form.name|add_class:"form-control" }}  <!-- Name field -->
+
+                <label for="report">Casualty Report</label>
+                {{ form.report|add_class:"form-control" }}  <!-- Report field -->
+
+                <label for="amount">Amount</label>
+                {{ form.amount|add_class:"form-control" }}  <!-- Amount field -->
             </div>
             <button type="submit" class="btn btn-success">Submit Report</button>
             <a href="{% url 'dashboard' %}" class="btn btn-danger">Cancel</a>
+        <a href="{% url 'dashboard' %}" class="btn btn-secondary">Back to Dashboard</a>
+
         </form>
+
     </div>
 </body>
 </html>
